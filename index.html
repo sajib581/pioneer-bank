@@ -33,7 +33,7 @@
             <div class="col-md-4">
                 <div class="withdraw status">
                     <h5>Withdraw</h5>
-                    <h2>$00</h2>
+                    <h2>$<span id="currentWithDraw">00</span></h2>
                 </div>
             </div>
             <div class="col-md-4 ">
@@ -86,7 +86,10 @@
         let withDrawBtn = document.getElementById("addWithdraw")
         withDrawBtn.addEventListener('click', function() {
             let withDrawNumber = getInputNumber("withdrawAmount")
-            console.log(withDrawNumber);
+            updateSpanText("currentWithDraw", withDrawNumber)
+            updateSpanText("currentBalance", -1 * withDrawNumber)
+            document.getElementById('withdrawAmount').value = ""
+
         })
 
         function updateSpanText(id, depositNumber) {
